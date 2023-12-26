@@ -1,5 +1,7 @@
 package dto;
 
+import java.time.LocalDate;
+
 public class Board {
 	private static int num;
 	private int boradNum;
@@ -8,4 +10,7 @@ public class Board {
 	private String date;
 	private String contents;
 	private int hits;
+
+	
+
 }

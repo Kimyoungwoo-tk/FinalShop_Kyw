@@ -1,5 +1,11 @@
 package dao;
 
-public class MemberDAO {
+import java.util.ArrayList;
 
+import dto.Board;
+import dto.Item;
+import dto.Member;
+
+public class MemberDAO {
+	
 }
