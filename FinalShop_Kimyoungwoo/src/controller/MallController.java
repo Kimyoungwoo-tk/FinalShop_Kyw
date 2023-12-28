@@ -4,19 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import _mall.MenuCommand;
 import dao.FileDAO;
-import menu_admin.AdminBoard;
-import menu_admin.AdminItem;
-import menu_admin._AdminMain;
-import menu_admin.AdminMember;
-import menu_mall.MallJoin;
-import menu_mall.MallLogin;
-import menu_mall._MallMain;
-import menu_memeber.MemberBoard;
-import menu_memeber.MemberCart;
-import menu_memeber.MemberInfo;
-import menu_memeber._MemberMain;
-import menu_memeber.MemberQuit;
-import menu_memeber.MemberShopping;
+import files.AdminFileSave;
+import menu_admin.*;
+import menu_admin_member.AdminMemberDelete;
+import menu_admin_member.AdminMemberList;
+import menu_mall.*;
+import menu_member.*;
 
 public class MallController {
 	private MallController() {}
@@ -29,7 +22,7 @@ public class MallController {
 	
 
 	private String loginId;
-	private String next;
+	private String next; //다음화면
 	private MenuCommand menuCom;
 	public Map<String, MenuCommand> mapCont;
 
@@ -64,9 +57,12 @@ public class MallController {
 		mapCont.put("MemberMain", new _MemberMain());
 		mapCont.put("MemberShopping", new MemberShopping());
 		mapCont.put("MemberQuit", new MemberQuit());
-
+		mapCont.put("AdminFileSave", new AdminFileSave());
+		mapCont.put("AdminMemberList", new AdminMemberList());
+		mapCont.put("AdminMemberDelete", new AdminMemberDelete());
+		
 		menuCom = mapCont.get("MallMain");
-		menuCom.init();
+		FileDAO.getInstance();
 		update();
 
 	}
@@ -76,7 +72,7 @@ public class MallController {
 			if (!menuCom.update()) {
 				if (next != null) {
 					menuCom = mapCont.get(next);
-					menuCom.init();
+					
 				} else {
 					return;
 				}

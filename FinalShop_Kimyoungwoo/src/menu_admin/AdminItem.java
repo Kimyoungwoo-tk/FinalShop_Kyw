@@ -11,10 +11,7 @@ import util.Util;
 public class AdminItem implements MenuCommand {
 
 
-	@Override
-	public void init() {
-
-	}
+	
 
 	@Override
 	public boolean update() {

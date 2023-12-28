@@ -14,7 +14,7 @@ public class _testMain {
 	
 		con.setLoginId("test1");
 		MenuCommand commd = con.mapCont.get("MemberCart");
-		commd.init();
+		
 		commd.update();
 
 	}

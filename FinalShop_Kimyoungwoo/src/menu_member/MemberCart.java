@@ -10,10 +10,7 @@ import util.Util;
 public class MemberCart implements MenuCommand {
 
 
-	@Override
-	public void init() {
 
-	}
 
 	@Override
 	public boolean update() {

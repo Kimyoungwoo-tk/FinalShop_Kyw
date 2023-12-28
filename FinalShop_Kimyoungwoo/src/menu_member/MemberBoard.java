@@ -9,10 +9,6 @@ import util.Util;
 public class MemberBoard implements MenuCommand{
 
 
-	@Override
-	public void init() {
-
-	}
 
 	@Override
 	public boolean update() {
