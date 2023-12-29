@@ -12,6 +12,10 @@ public class AdminMemberList implements MenuCommand {
 		MemberDAO mDAO = MemberDAO.getInstance();
 		
 		cont.setNext("AdminMember");
+		if(mDAO.getmList().size()==0) {
+			System.out.println("회원이 존재하지 않습니다");
+			return false;
+		}
 		
 		mDAO.MemberList();
 		return false;

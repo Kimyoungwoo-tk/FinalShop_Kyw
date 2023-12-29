@@ -28,9 +28,8 @@ public class AdminMemberDelete implements MenuCommand {
 			System.out.println("[관리자] 관리자는 삭제 불가");
 			return false;
 		}
-		// 맴버리스트에서 id 삭제
+		
 		mDAO.MemberDelete(mDAO.idValue(id));	
-		// 카트에서도 id와 일치하는 값 삭제
 		cDAO.MemberDelete(id);	
 		System.out.println("[관리자] %s 회원 삭제 완료".formatted(id));
 		return false;

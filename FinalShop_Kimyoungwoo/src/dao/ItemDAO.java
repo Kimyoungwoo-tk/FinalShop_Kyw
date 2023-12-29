@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -57,7 +58,15 @@ public class ItemDAO {
 			}
 		}
 		Item.setNum(maxItemNum);
-//		categoryList = FileToDataCategory();
+		categoryList = FileToDataCategory();
+	}
+	public static ArrayList<String> FileToDataCategory(){
+		Set<String> categoryList = new HashSet<String>();
+		for(int i =0; i<itemList.size(); i+=1) {
+			categoryList.add(itemList.get(i).getCategoryName());
+		}
+		ArrayList<String> list = new ArrayList<>(categoryList);
+		return list;
 	}
 	
 	public static String DataToFile() {
@@ -70,6 +79,40 @@ public class ItemDAO {
 		data = data.substring(0, data.length() - 1);
 		return data;
 	}
+	
+	public Item itemValue(int itemNum) {
+		for (int i = 0; i < itemList.size(); i += 1) {
+			if (itemList.get(i).getItemNum() == itemNum) {
+				return itemList.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public String getCategoryName(int idx) {
+		return categoryList.get(idx);
+	}
+	
+	public void CategoryList() {
+		for(int i =0; i<categoryList.size(); i+=1) {
+			System.out.println("[%d] %s".formatted(i+1,categoryList.get(i)));
+		}
+	}
+	
+	public ArrayList<Item> CategoryToItemList(String cgName){
+		ArrayList<Item> cgtoitemList = new ArrayList<Item>();
+		int cnt =1;
+		for(int i =0; i< itemList.size(); i+=1) {
+			if(itemList.get(i).getCategoryName().equals(cgName)) {
+				cgtoitemList.add(itemList.get(i));
+				System.out.println(
+						"[%d] %s %d원".formatted(cnt++,itemList.get(i).getItemName(),itemList.get(i).getPrice())
+						);
+			}
+		}
+		return cgtoitemList;
+	}
+	
 	
 
 }

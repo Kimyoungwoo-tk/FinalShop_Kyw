@@ -76,4 +76,39 @@ public class CartDAO {
 		Cart.setNum(maxCartNum);
 	}
 	
+	public boolean getMyCartList(String id) {
+		ItemDAO iDAO = ItemDAO.getInstance();
+		int cnt = 0;
+		int sum = 0;
+		int total = 0;
+		
+		for(int i =0; i< cList.size() ; i+=1) {
+			if(cList.get(i).getId().equals(id)) {
+				Item myItem = iDAO.itemValue(cList.get(i).getItemNum());
+				int sum2 = cList.get(i).getItemCnt()*myItem.getPrice();
+				
+				System.out.println("%d %10s (%10d원) %d개 총%5d원".formatted(++cnt,myItem.getItemName(),myItem.getPrice(),cList.get(i).getItemCnt(),sum2));
+				total += sum2;
+				sum+= cList.get(i).getItemCnt();
+			}
+		}
+		System.out.println("총 %d개 (%d원)".formatted(sum,total));
+		return cnt == 0 ? true: false;
+			
+	}
+	
+	public int cartNumvalue(String id, int itemNum) {
+		if(cList.size() ==0 ) return -1;
+		for(int i =0; i<cList.size(); i+=1) {
+			if(cList.get(i).getId().equals(id) && cList.get(i).getItemNum() == itemNum) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	
+	
+	
+	
 }

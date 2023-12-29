@@ -77,7 +77,7 @@ public class FileDAO {
 
 	}
 	private List<String> FileLoad(FileName name) throws IOException {
-		Files.readAllLines(Paths.get(txtPath + name.getName())).forEach(System.out::println);
+//		Files.readAllLines(Paths.get(txtPath + name.getName())).forEach(System.out::println);
 		return Files.readAllLines(Paths.get(txtPath + name.getName()));
 	}
 	public void FileSave(String txtName, String data) throws IOException {

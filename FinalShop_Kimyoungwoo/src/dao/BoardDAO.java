@@ -29,6 +29,9 @@ public class BoardDAO {
 	public int getCount() {
 		return count;
 	}
+	public void setCurPageNum(int curPageNum) {
+		this.curPageNum = curPageNum;
+	}
 
 	public int getPageSize() {
 		return pageSize;
@@ -83,5 +86,48 @@ public class BoardDAO {
 		}
 		Board.setNum(maxBoardNum);
 	}
+	
+	public void PrintBoard() {
+		System.out.printf("총 게시글: %d개",count);
+		System.out.println("[%d/%d]".formatted(curPageNum,pageCount));
+		for(int i =startRow; i<endRow; i+=1) {
+			System.out.printf("(%d)",i+1);
+			bList.get(i).PrintBoard();
+		}
+		System.out.println("================");
+	}
+	
+	public boolean DeletePage(int idx, String id) {
+		if(!id.equals("관리자") && !bList.get(idx).getId().equals(id)) {
+			return true;
+		}
+		bList.remove(idx);
+		return false;
+	}
+	
+	public void PageCal() {
+		count = bList.size();
+		pageCount = count/pageSize;
+		if(count%pageSize>0) {
+			pageCount+=1;
+		}
+		pageCount = pageCount == 0 ? 1:pageCount;
+		startRow = (curPageNum -1)*pageSize;
+		endRow = startRow+pageSize;
+		if(endRow>count)
+			endRow = count;
+	}
+	
+	public void BoardViewPage(int idx) {
+		bList.get(idx).ViewPage();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

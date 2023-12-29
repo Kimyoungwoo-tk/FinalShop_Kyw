@@ -8,6 +8,12 @@ import files.AdminFileSave;
 import menu_admin.*;
 import menu_admin_member.AdminMemberDelete;
 import menu_admin_member.AdminMemberList;
+import menu_board.BoardAddPage;
+import menu_board.BoardAfterPage;
+import menu_board.BoardDelPage;
+import menu_board.BoardList;
+import menu_board.BoardfrontPage;
+import menu_board.BoardshowPage;
 import menu_mall.*;
 import menu_member.*;
 
@@ -60,6 +66,15 @@ public class MallController {
 		mapCont.put("AdminFileSave", new AdminFileSave());
 		mapCont.put("AdminMemberList", new AdminMemberList());
 		mapCont.put("AdminMemberDelete", new AdminMemberDelete());
+		mapCont.put("MemberChangePw", new MemberChangePw());
+		mapCont.put("BoardAddPage", new BoardAddPage());
+		mapCont.put("BoardDelPage", new BoardDelPage());
+		mapCont.put("BoardList", new BoardList());
+		mapCont.put("BoardfrontPage", new BoardfrontPage());
+		mapCont.put("BoardAfterPage", new BoardAfterPage());
+		mapCont.put("BoardshowPage", new BoardshowPage());
+		
+		
 		
 		menuCom = mapCont.get("MallMain");
 		FileDAO.getInstance();

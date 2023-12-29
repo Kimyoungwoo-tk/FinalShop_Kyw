@@ -45,7 +45,7 @@ public class Cart {
 	}
 	
 	
-	Cart(String id, int itemNum, int itemCnt) {
+	public Cart(String id, int itemNum, int itemCnt) {
 		this.cartNum = ++num;
 		this.id = id;
 		this.itemNum = itemNum;
