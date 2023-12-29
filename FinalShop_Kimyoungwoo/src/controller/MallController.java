@@ -6,6 +6,9 @@ import _mall.MenuCommand;
 import dao.FileDAO;
 import files.AdminFileSave;
 import menu_admin.*;
+import menu_admin_item.AdminAddItem;
+import menu_admin_item.AdminDelItem;
+import menu_admin_item.AdminItemRev;
 import menu_admin_member.AdminMemberDelete;
 import menu_admin_member.AdminMemberList;
 import menu_board.BoardAddPage;
@@ -73,6 +76,10 @@ public class MallController {
 		mapCont.put("BoardfrontPage", new BoardfrontPage());
 		mapCont.put("BoardAfterPage", new BoardAfterPage());
 		mapCont.put("BoardshowPage", new BoardshowPage());
+		mapCont.put("AdminAddItem", new AdminAddItem());
+		mapCont.put("AdminDelItem", new AdminDelItem());
+		mapCont.put("AdminItemRev", new AdminItemRev());
+		
 		
 		
 		
