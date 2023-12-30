@@ -38,14 +38,17 @@ public class AdminAddItem implements MenuCommand {
 			return false;
 		}
 		iDAO.getItemList().add(new Item(cgName,itemName,price));
-		
-		
-		
-		
-		
-		
-		
+		iDAO.addCategory(cgName);
+		System.out.println("아이템 추가 완료");
 		return false;
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

@@ -121,9 +121,55 @@ public class ItemDAO {
 				
 	}
 	
-	public void addCategory(String Category) {
+	public void addCategory(String category) {
+		long cnt = categoryList.stream().filter(c -> c.equals(category)).count();
+		if (cnt == 0) {
+			categoryList.add(category);
+		}
 		
 	}
+	public void DeleteItem(int itemNum) {
+		for (int i = 0; i < itemList.size(); i += 1) {
+			if (itemList.get(i).getItemNum() == itemNum) {
+				itemList.remove(i);
+				break;
+			}
+		}
+	}
+	
+	public int[][] itemNumList() {
+		int[][] arr = new int[itemList.size()][4];
+
+		for (int i = 0; i < arr.length; i += 1) {
+			arr[i][0] = i;
+			arr[i][1] = itemList.get(i).getItemNum();
+		}
+
+		return arr;
+	}
+
+	
+	public void ItemRevenue(int[][] arr) {
+		
+		for (int i = 0; i < arr.length; i += 1) {
+			for (int k = 0; k < arr.length; k += 1) {
+				if (arr[i][3] < arr[k][3]) {
+					int[] data = arr[i];
+					arr[i] = arr[k];
+					arr[k] = data;
+				}
+			}
+		}
+
+		for (int i = 0; i < arr.length; i += 1) {
+			if (arr[i][2] == 0)
+				break;
+			System.out.printf("%s %d개%n", itemList.get(arr[i][0]), arr[i][2]);
+		}
+	}
+
+	
+	
 	
 	
 

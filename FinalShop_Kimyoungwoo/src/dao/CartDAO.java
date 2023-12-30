@@ -107,6 +107,23 @@ public class CartDAO {
 		return -1;
 	}
 	
+	public void ItemRevenue(int[][] arr){
+		for(Cart c : cList) {
+			for(int i=0 ; i<arr.length ; i++) {		
+				if(c.getItemNum() == arr[i][1]) {
+					arr[i][2] += c.getItemCnt();
+					break;
+				}
+			}
+		}
+		for(int i=0 ; i<arr.length ; i++) {
+			for(int k=0 ; k<arr.length ; k+=1) {
+				if(arr[i][2] <= arr[k][2]) {
+					arr[i][3] += 1;
+				}
+			}
+		}
+	}
 	
 	
 	
